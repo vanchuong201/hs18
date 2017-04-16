@@ -61,7 +61,7 @@ $config = [
 
     'modules' => [
         'adminCD' => [
-            'class' => 'app\modules\adminCD\ProductModule',
+            'class' => 'app\modules\adminCD\AdminModule',
         ],
     ],
 ];
