@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\modules\adminCD\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Product;
+use app\modules\adminCD\models\Category;
 
 /**
- * ProductSearch represents the model behind the search form about `app\models\Product`.
+ * CategorySearch represents the model behind the search form about `app\modules\adminCD\models\Category`.
  */
-class ProductSearch extends Product
+class CategorySearch extends Category
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
-            [['name', 'short_name', 'description'], 'safe'],
+            [['id', 'p_id', 'status', 'type', 'created_at', 'created_by'], 'integer'],
+            [['name', 'short_name', 'image'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Category::find();
 
         // add conditions that should always apply here
 
@@ -60,18 +60,16 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'cat_id' => $this->cat_id,
+            'p_id' => $this->p_id,
             'status' => $this->status,
-            'price' => $this->price,
-            'price_saleoff' => $this->price_saleoff,
+            'type' => $this->type,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'short_name', $this->short_name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }

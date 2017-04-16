@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\adminCD\models;
 
 use Yii;
 
@@ -9,7 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property string $short_name
+ * @property string $name_admin
+ * @property integer $quantity_left
  * @property string $description
  * @property integer $cat_id
  * @property integer $status
@@ -36,9 +37,9 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['quantity_left', 'cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
             [['description'], 'string'],
-            [['cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
-            [['name', 'short_name'], 'string', 'max' => 255],
+            [['name', 'name_admin'], 'string', 'max' => 255],
         ];
     }
 
@@ -50,7 +51,8 @@ class Product extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'short_name' => 'Short Name',
+            'name_admin' => 'Name Admin',
+            'quantity_left' => 'Quantity Left',
             'description' => 'Description',
             'cat_id' => 'Cat ID',
             'status' => 'Status',

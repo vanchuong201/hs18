@@ -47,8 +47,23 @@ $config = [
             'rules' => [
             ],
         ],
+
+        'formatter' => [
+            'dateFormat' => 'dd-MM-yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => '.',
+            'currencyCode' => 'VND',
+        ],
+
+        //components end
     ],
     'params' => $params,
+
+    'modules' => [
+        'adminCD' => [
+            'class' => 'app\modules\adminCD\ProductModule',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

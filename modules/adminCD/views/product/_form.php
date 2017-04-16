@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Product */
+/* @var $model app\modules\adminCD\models\Product */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -14,7 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'short_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name_admin')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'quantity_left')->textInput() ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

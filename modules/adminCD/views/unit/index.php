@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ProductSearch */
+/* @var $searchModel app\modules\adminCD\models\UnitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = 'Orders';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,16 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
-            'short_name',
-            'description:ntext',
-            'cat_id',
+            'user_id',
+            'fullname',
+            'phone',
+            'facebook',
+            // 'email:email',
+            // 'city_id',
+            // 'district_id',
+            // 'address',
+            // 'note',
+            // 'ship',
             // 'status',
-            // 'price',
-            // 'price_saleoff',
+            // 'loss',
             // 'created_at',
-            // 'updated_at',
             // 'created_by',
+            // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

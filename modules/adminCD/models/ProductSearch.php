@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\modules\adminCD\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Category;
+use app\modules\adminCD\models\Product;
 
 /**
- * CategorySearch represents the model behind the search form about `app\models\Category`.
+ * ProductSearch represents the model behind the search form about `app\modules\adminCD\models\Product`.
  */
-class CategorySearch extends Category
+class ProductSearch extends Product
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
-            [['id', 'p_id', 'status', 'type', 'created_at', 'created_by'], 'integer'],
-            [['name', 'short_name', 'image'], 'safe'],
+            [['id', 'quantity_left', 'cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
+            [['name', 'name_admin', 'description'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = Product::find();
 
         // add conditions that should always apply here
 
@@ -60,16 +60,19 @@ class CategorySearch extends Category
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'p_id' => $this->p_id,
+            'quantity_left' => $this->quantity_left,
+            'cat_id' => $this->cat_id,
             'status' => $this->status,
-            'type' => $this->type,
+            'price' => $this->price,
+            'price_saleoff' => $this->price_saleoff,
             'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_name', $this->short_name])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'name_admin', $this->name_admin])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }
