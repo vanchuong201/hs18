@@ -22,6 +22,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
     /**
      * @inheritdoc
      */
@@ -50,17 +52,28 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'name_admin' => 'Name Admin',
-            'quantity_left' => 'Quantity Left',
-            'description' => 'Description',
-            'cat_id' => 'Cat ID',
-            'status' => 'Status',
-            'price' => 'Price',
-            'price_saleoff' => 'Price Saleoff',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
+            'name' => 'Tến sản phẩm',
+            'name_admin' => 'Tên sản phẩm cho admin',
+            'quantity_left' => 'Tồn kho',
+            'description' => 'Mô tả sản phẩm',
+            'cat_id' => 'Danh mục',
+            'status' => 'Trạng thái',
+            'price' => 'Giá',
+            'price_saleoff' => 'Giá KM',
+            'created_at' => 'Thời gian tạo',
+            'updated_at' => 'Thời gian cập nhật',
+            'created_by' => 'Người tạo',
         ];
+    }
+    public static function getStatusList()
+    {
+        return array(
+            self::STATUS_INACTIVE => 'Không kích hoạt',
+            self::STATUS_ACTIVE => 'Kích hoạt',
+        );
+    }
+
+    public function getCateById(){
+        return $this->hasOne(Category::className(),['id'=>'cat_id']);
     }
 }

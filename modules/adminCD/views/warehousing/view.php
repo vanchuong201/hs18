@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\adminCD\models\Unit */
+/* @var $model app\modules\adminCD\models\Warehousing */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Units', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Warehousings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="unit-view">
+<div class="warehousing-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,8 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'description:ntext',
+            'product_id',
+            'quantity',
+            'imported_at',
+            'imported_by',
+            'note:ntext',
+            'created_at',
+            'created_by',
         ],
     ]) ?>
 

@@ -18,7 +18,7 @@ class OrderSearch extends Order
     public function rules()
     {
         return [
-            [['id', 'user_id', 'phone', 'city_id', 'district_id', 'ship', 'status', 'loss', 'created_at', 'created_by', 'updated_at'], 'integer'],
+            [['id', 'user_id', 'phone', 'city_id', 'district_id', 'ship_costs', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
             [['fullname', 'facebook', 'email', 'address', 'note'], 'safe'],
         ];
     }
@@ -64,11 +64,12 @@ class OrderSearch extends Order
             'phone' => $this->phone,
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
-            'ship' => $this->ship,
+            'ship_costs' => $this->ship_costs,
             'status' => $this->status,
-            'loss' => $this->loss,
-            'created_at' => $this->created_at,
+            'other_costs' => $this->other_costs,
+            'seller' => $this->seller,
             'created_by' => $this->created_by,
+            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 

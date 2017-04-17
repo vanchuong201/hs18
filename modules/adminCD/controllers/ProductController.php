@@ -2,6 +2,7 @@
 
 namespace app\modules\adminCD\controllers;
 
+use app\modules\adminCD\models\Category;
 use Yii;
 use app\modules\adminCD\models\Product;
 use app\modules\adminCD\models\ProductSearch;
@@ -68,8 +69,10 @@ class ProductController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $listAllCate = Category::getAllCate();
             return $this->render('create', [
                 'model' => $model,
+                'listAllCate' =>$listAllCate,
             ]);
         }
     }

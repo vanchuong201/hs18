@@ -21,15 +21,23 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+//        'layout' => "{items}",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute'=>'id',
+            ],
             'name',
             'name_admin',
+            [
+                'label'=>"Danh mục",
+                'attribute'=>'cat_id',
+                'value'=>'cateById.name',
+                'filter'=>\yii\helpers\ArrayHelper::map(\app\modules\adminCD\models\Category::getAllCate(),'id','name')
+            ],
             'quantity_left',
             'description:ntext',
-            // 'cat_id',
             // 'status',
             // 'price',
             // 'price_saleoff',

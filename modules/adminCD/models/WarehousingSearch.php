@@ -5,12 +5,12 @@ namespace app\modules\adminCD\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\adminCD\models\Unit;
+use app\modules\adminCD\models\Warehousing;
 
 /**
- * UnitSearch represents the model behind the search form about `app\modules\adminCD\models\Unit`.
+ * WarehousingSearch represents the model behind the search form about `app\modules\adminCD\models\Warehousing`.
  */
-class UnitSearch extends Unit
+class WarehousingSearch extends Warehousing
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class UnitSearch extends Unit
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'description'], 'safe'],
+            [['id', 'product_id', 'quantity', 'imported_at', 'imported_by', 'created_at', 'created_by'], 'integer'],
+            [['note'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UnitSearch extends Unit
      */
     public function search($params)
     {
-        $query = Unit::find();
+        $query = Warehousing::find();
 
         // add conditions that should always apply here
 
@@ -60,10 +60,15 @@ class UnitSearch extends Unit
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'product_id' => $this->product_id,
+            'quantity' => $this->quantity,
+            'imported_at' => $this->imported_at,
+            'imported_by' => $this->imported_by,
+            'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
     }

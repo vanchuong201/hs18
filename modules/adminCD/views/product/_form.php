@@ -2,10 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\modules\adminCD\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\adminCD\models\Product */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $listAllCate */
 ?>
 
 <div class="product-form">
@@ -16,23 +19,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name_admin')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quantity_left')->textInput() ?>
-
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'cat_id')->textInput() ?>
+    <?= $form->field($model, 'cat_id')->dropDownList(ArrayHelper::map($listAllCate,'id','name'), ['prompt'=>'Chọn danh mục']) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(Product::getStatusList(),['options' => [Product::STATUS_ACTIVE => ['selected'=>true]]]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
     <?= $form->field($model, 'price_saleoff')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

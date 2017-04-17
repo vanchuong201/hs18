@@ -19,6 +19,8 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
     /**
      * @inheritdoc
      */
@@ -46,14 +48,25 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'p_id' => 'P ID',
-            'name' => 'Name',
+            'p_id' => 'Danh mục cha',
+            'name' => 'Tên danh mục',
             'short_name' => 'Short Name',
             'image' => 'Image',
-            'status' => 'Status',
-            'type' => 'Type',
+            'status' => 'Trạng thái',
+            'type' => 'Kiểu danh mục',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
         ];
+    }
+
+    public static function getStatusList()
+    {
+        return array(
+            self::STATUS_INACTIVE => 'Không kích hoạt',
+            self::STATUS_ACTIVE => 'Kích hoạt',
+        );
+    }
+    static function getAllCate(){
+        return self::find()->where(['status'=>self::STATUS_ACTIVE])->all();
     }
 }

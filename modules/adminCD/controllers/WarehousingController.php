@@ -3,16 +3,16 @@
 namespace app\modules\adminCD\controllers;
 
 use Yii;
-use app\modules\adminCD\models\Unit;
-use app\modules\adminCD\models\UnitSearch;
+use app\modules\adminCD\models\Warehousing;
+use app\modules\adminCD\models\WarehousingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UnitController implements the CRUD actions for Unit model.
+ * WarehousingController implements the CRUD actions for Warehousing model.
  */
-class UnitController extends Controller
+class WarehousingController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class UnitController extends Controller
     }
 
     /**
-     * Lists all Unit models.
+     * Lists all Warehousing models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UnitSearch();
+        $searchModel = new WarehousingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class UnitController extends Controller
     }
 
     /**
-     * Displays a single Unit model.
+     * Displays a single Warehousing model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class UnitController extends Controller
     }
 
     /**
-     * Creates a new Unit model.
+     * Creates a new Warehousing model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Unit();
+        $model = new Warehousing();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class UnitController extends Controller
     }
 
     /**
-     * Updates an existing Unit model.
+     * Updates an existing Warehousing model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class UnitController extends Controller
     }
 
     /**
-     * Deletes an existing Unit model.
+     * Deletes an existing Warehousing model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class UnitController extends Controller
     }
 
     /**
-     * Finds the Unit model based on its primary key value.
+     * Finds the Warehousing model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Unit the loaded model
+     * @return Warehousing the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Unit::findOne($id)) !== null) {
+        if (($model = Warehousing::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
