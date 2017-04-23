@@ -12,6 +12,7 @@ use Yii;
  * @property string $name_admin
  * @property integer $quantity_left
  * @property string $description
+ * @property string $unit
  * @property integer $cat_id
  * @property integer $status
  * @property integer $price
@@ -39,7 +40,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['quantity_left', 'cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
+            [['quantity_left', 'unit', 'cat_id', 'status', 'price', 'price_saleoff', 'created_at', 'updated_at', 'created_by'], 'integer'],
             [['description'], 'string'],
             [['name', 'name_admin'], 'string', 'max' => 255],
         ];
@@ -56,6 +57,7 @@ class Product extends \yii\db\ActiveRecord
             'name_admin' => 'Tên sản phẩm cho admin',
             'quantity_left' => 'Tồn kho',
             'description' => 'Mô tả sản phẩm',
+            'unit'=>'Đơn vị tính',
             'cat_id' => 'Danh mục',
             'status' => 'Trạng thái',
             'price' => 'Giá',
@@ -75,5 +77,8 @@ class Product extends \yii\db\ActiveRecord
 
     public function getCateById(){
         return $this->hasOne(Category::className(),['id'=>'cat_id']);
+    }
+    public function getUnitById(){
+        return $this->hasOne(Unit::className(), ['id'=>'unit']);
     }
 }

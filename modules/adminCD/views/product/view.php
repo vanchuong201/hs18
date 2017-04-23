@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name_admin',
             'quantity_left',
             'description:ntext',
+            [
+                'label' => 'Đơn vị tính',
+                'attribute'=>'unitById.name',
+            ],
             'cat_id',
             'status',
             'price',
@@ -43,4 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?php
+    echo Yii::$app->formatter->asCurrency('190000','VND', [],['text'=>'231231'])
+    ?>
 </div>

@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
+    <?= $form->field($model, 'unit') ?>
+
     <?php // echo $form->field($model, 'cat_id') ?>
 
     <?php // echo $form->field($model, 'status') ?>
