@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\adminCD\models\OrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,8 +18,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::button('Create Order', ['value'=>Url::to('order/create'), 'class' => 'btn btn-success','id'=>'create_order']) ?>
     </p>
+
+    <?php
+    Modal::begin([
+        'header'=>'<h4>Tạo đơn hàng</h4>',
+        'id'=>'create_order_modal',
+        'size'=>'modal-lg',
+    ]);
+    echo "<div id='create_order_modal_content'></div>";
+    Modal::end();
+    ?>
+
+
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -46,3 +60,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+
+<?php
+$script = <<< JS
+// Here you right all your javascript stuff
+
+JS;
+$this->registerJs($script);
+?>

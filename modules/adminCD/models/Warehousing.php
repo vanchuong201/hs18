@@ -45,13 +45,17 @@ class Warehousing extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'product_id' => 'Product ID',
-            'quantity' => 'Quantity',
-            'imported_at' => 'Imported At',
-            'imported_by' => 'Imported By',
-            'note' => 'Note',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
+            'product_id' => 'ID sản phẩm',
+            'quantity' => 'Số lượng',
+            'imported_at' => 'Thời gian nhập',
+            'imported_by' => 'Người nhập',
+            'note' => 'Ghi chú',
+            'created_at' => 'Thời giant tạo',
+            'created_by' => 'Người tạo',
         ];
+    }
+
+    public function getProductWare(){
+        return $this->hasOne(Product::className(), ['id'=> 'product_id']);
     }
 }

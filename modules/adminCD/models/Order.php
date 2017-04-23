@@ -2,6 +2,7 @@
 
 namespace app\modules\adminCD\models;
 
+use app\models\User;
 use Yii;
 
 /**
@@ -42,7 +43,7 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'phone', 'city_id', 'district_id', 'ship_costs', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
-            [['city_id', 'district_id', 'address', 'status'], 'required'],
+//            [['city_id', 'district_id', 'address', 'status'], 'required'],
             [['note'], 'string'],
             [['fullname', 'facebook', 'email', 'address'], 'string', 'max' => 255],
         ];
@@ -72,5 +73,9 @@ class Order extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getUser_(){
+        return $this->hasOne(User::className(),['id'=>'user_id']);
     }
 }

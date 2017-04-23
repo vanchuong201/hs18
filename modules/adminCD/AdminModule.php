@@ -21,4 +21,12 @@ class AdminModule extends \yii\base\Module
 
         // custom initialization code goes here
     }
+    public function behaviors()
+    {
+        return [
+            'ghost-access'=> [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
+    }
 }
