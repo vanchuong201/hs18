@@ -73,9 +73,18 @@
                     ],
                     /* ------ UserManagement ------ */
 
+                    /* -------- App -------- */
+                    ['label' => 'AdminCD', 'options' => ['class' => 'header']],
+                    ['label' => 'Product', 'icon' => 'barcode', 'url' => ['/adminCD/product']],
+                    ['label' => 'Product Category', 'icon' => 'bars', 'url' => ['/adminCD/category']],
+                    ['label' => 'Order', 'icon' => 'tags', 'url' => ['/adminCD/category']],
+                    ['label' => 'Warehousing', 'icon' => 'truck', 'url' => ['/adminCD/category']],
+                    ['label' => 'Unit', 'icon' => 'money', 'url' => ['/adminCD/category']],
 
+                    /* -------- App -------- */
 
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    /* ------ Tools ------- */
+                    ['label' => 'Yii2 Tools', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
@@ -105,6 +114,8 @@
                             ],
                         ],
                     ],
+                    /* ------ Tools ------- */
+
                 ],
             ]
         ) ?>
