@@ -18,7 +18,7 @@ class AdminModule extends \yii\base\Module
     public function init()
     {
         parent::init();
-
+//        $this->layout = "main";
         // custom initialization code goes here
     }
     public function behaviors()
