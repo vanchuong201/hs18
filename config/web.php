@@ -59,7 +59,7 @@ $config = [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@app/views/adminCD',
+                    '@app/views' => '@app/views/',
                 ],
             ],
         ],
