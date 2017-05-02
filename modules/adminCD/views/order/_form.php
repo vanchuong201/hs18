@@ -48,7 +48,9 @@ use app\modules\adminCD\models\Product;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ship_costs')->textInput() ?>
+    <?= $form->field($model, 'ship_cost')->textInput() ?>
+
+    <?= $form->field($model, 'pay_type')->textInput() ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 

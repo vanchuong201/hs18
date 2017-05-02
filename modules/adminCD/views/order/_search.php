@@ -33,7 +33,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'ship_costs') ?>
+    <?php // echo $form->field($model, 'ship_cost') ?>
+
+    <?php // echo $form->field($model, 'pay_type') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
