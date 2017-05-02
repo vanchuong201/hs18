@@ -2,7 +2,7 @@
 
 namespace app\modules\adminCD\models;
 
-use app\models\User;
+use webvimark\modules\UserManagement\models\User;
 use Yii;
 
 /**
@@ -10,7 +10,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property string $fullname
+ * @property string $full_name
  * @property integer $phone
  * @property string $facebook
  * @property string $email
@@ -46,7 +46,7 @@ class Order extends \yii\db\ActiveRecord
             [['user_id', 'phone', 'city_id', 'district_id', 'ship_cost', 'pay_type', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
             [['city_id', 'district_id', 'address', 'status'], 'required'],
             [['note'], 'string'],
-            [['fullname', 'facebook', 'email', 'address'], 'string', 'max' => 255],
+            [['full_name', 'facebook', 'email', 'address'], 'string', 'max' => 255],
         ];
     }
 
@@ -58,7 +58,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'fullname' => 'Fullname',
+            'full_name' => 'Full Name',
             'phone' => 'Phone',
             'facebook' => 'Facebook',
             'email' => 'Email',

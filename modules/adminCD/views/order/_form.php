@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\modules\adminCD\models\Product;
-
+use webvimark\modules\UserManagement\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\modules\adminCD\models\Order */
 /* @var $form yii\widgets\ActiveForm */
@@ -32,9 +32,9 @@ use app\modules\adminCD\models\Product;
     ?>
 
 
-    <?php //echo $form->field($model, 'user_id')->textInput() ?>
+    <?php echo $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput() ?>
 

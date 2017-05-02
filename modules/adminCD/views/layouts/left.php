@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p><?=Yii::$app->getUser()->username?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -77,9 +77,9 @@
                     ['label' => 'AdminCD', 'options' => ['class' => 'header']],
                     ['label' => 'Product', 'icon' => 'barcode', 'url' => ['/adminCD/product']],
                     ['label' => 'Product Category', 'icon' => 'bars', 'url' => ['/adminCD/category']],
-                    ['label' => 'Order', 'icon' => 'tags', 'url' => ['/adminCD/category']],
-                    ['label' => 'Warehousing', 'icon' => 'truck', 'url' => ['/adminCD/category']],
-                    ['label' => 'Unit', 'icon' => 'money', 'url' => ['/adminCD/category']],
+                    ['label' => 'Order', 'icon' => 'tags', 'url' => ['/adminCD/order']],
+                    ['label' => 'Warehousing', 'icon' => 'truck', 'url' => ['/adminCD/warehousing']],
+                    ['label' => 'Unit', 'icon' => 'money', 'url' => ['/adminCD/unit']],
 
                     /* -------- App -------- */
 

@@ -19,7 +19,7 @@ class OrderSearch extends Order
     {
         return [
             [['id', 'user_id', 'phone', 'city_id', 'district_id', 'ship_cost', 'pay_type', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
-            [['fullname', 'facebook', 'email', 'address', 'note'], 'safe'],
+            [['full_name', 'facebook', 'email', 'address', 'note'], 'safe'],
         ];
     }
 
@@ -74,7 +74,7 @@ class OrderSearch extends Order
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'fullname', $this->fullname])
+        $query->andFilterWhere(['like', 'full_name', $this->full_name])
             ->andFilterWhere(['like', 'facebook', $this->facebook])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'address', $this->address])
