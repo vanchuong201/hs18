@@ -5,7 +5,7 @@ namespace app\modules\adminCD\models;
 use Yii;
 
 /**
- * This is the model class for table "hs_product_categories".
+ * This is the model class for table "hs_categories".
  *
  * @property integer $id
  * @property integer $p_id
@@ -26,7 +26,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'hs_product_categories';
+        return 'hs_categories';
     }
 
     /**
@@ -36,7 +36,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['p_id', 'status', 'type', 'created_at', 'created_by'], 'integer'],
-            [['name', 'created_at'], 'required'],
+            [['name'], 'required'],
             [['name', 'short_name', 'image'], 'string', 'max' => 255],
         ];
     }

@@ -17,7 +17,9 @@ use Yii;
  * @property integer $city_id
  * @property integer $district_id
  * @property string $address
+ * @property integer $amount
  * @property integer $ship_cost
+ * @property integer $total
  * @property integer $pay_type
  * @property integer $status
  * @property integer $other_costs
@@ -43,7 +45,7 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'phone', 'city_id', 'district_id', 'ship_cost', 'pay_type', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'phone', 'city_id', 'district_id', 'amount', 'ship_cost', 'total', 'pay_type', 'status', 'other_costs', 'seller', 'created_by', 'created_at', 'updated_at'], 'integer'],
             [['city_id', 'district_id', 'address', 'status'], 'required'],
             [['note'], 'string'],
             [['full_name', 'facebook', 'email', 'address'], 'string', 'max' => 255],
@@ -65,7 +67,9 @@ class Order extends \yii\db\ActiveRecord
             'city_id' => 'City ID',
             'district_id' => 'District ID',
             'address' => 'Address',
+            'amount' => 'Amount',
             'ship_cost' => 'Ship Cost',
+            'total' => 'Total',
             'pay_type' => 'Pay Type',
             'status' => 'Status',
             'other_costs' => 'Other Costs',

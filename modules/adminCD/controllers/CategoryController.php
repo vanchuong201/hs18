@@ -64,8 +64,11 @@ class CategoryController extends Controller
     public function actionCreate()
     {
         $model = new Category();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $params = Yii::$app->request->post();
+        $params[$model->formName()]['p_id'] = Yii::$app->request->post('p_id', 0);
+        $params[$model->formName()]['created_at'] = time();
+        $params[$model->formName()]['created_by'] = Yii::$app->user->id;
+        if ($model->load($params) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

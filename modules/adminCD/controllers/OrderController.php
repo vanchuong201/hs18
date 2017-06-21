@@ -17,7 +17,6 @@ class OrderController extends Controller
     /**
      * @inheritdoc
      */
-
     public function behaviors()
     {
         return [
@@ -69,7 +68,7 @@ class OrderController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->renderIsAjax('create', [
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }
@@ -120,17 +119,6 @@ class OrderController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-    protected function renderIsAjax($view, $params = [])
-    {
-        if ( Yii::$app->request->isAjax )
-        {
-            return $this->renderAjax($view, $params);
-        }
-        else
-        {
-            return $this->render($view, $params);
         }
     }
 }

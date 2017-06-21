@@ -2,9 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
-use yii\bootstrap\Modal;
-use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\adminCD\models\OrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,21 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::button('Create Order', ['value'=>Url::to('order/create'), 'class' => 'btn btn-success','id'=>'create_order']) ?>
+        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php
-    Modal::begin([
-        'header'=>'<h4>Tạo đơn hàng</h4>',
-        'id'=>'create_order_modal',
-        'size'=>'modal-lg',
-    ]);
-    echo "<div id='create_order_modal_content'></div>";
-    Modal::end();
-    ?>
-
-
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -47,7 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'city_id',
             // 'district_id',
             // 'address',
+            // 'amount',
             // 'ship_cost',
+            // 'total',
             // 'pay_type',
             // 'status',
             // 'other_costs',
@@ -60,12 +48,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
-
-<?php
-$script = <<< JS
-// Here you right all your javascript stuff
-
-JS;
-$this->registerJs($script);
-?>
+</div>

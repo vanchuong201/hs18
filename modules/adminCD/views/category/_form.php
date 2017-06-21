@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use \app\modules\adminCD\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\adminCD\models\Category */
@@ -13,7 +14,7 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'p_id')->dropDownList(ArrayHelper::map($model::find()->all(),'id','name')) ?>
+    <?= $form->field($model->loadDefaultValues(), 'p_id')->dropDownList(ArrayHelper::map($model::find()->all(),'id','name'), ['prompt'=>'Chọn danh mục cha']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -21,13 +22,13 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(Category::getStatusList()) ?>
 
     <?= $form->field($model, 'type')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?php //echo $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
+    <?php //echo $form->field($model, 'created_by')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

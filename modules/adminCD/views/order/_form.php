@@ -2,10 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use kartik\select2\Select2;
-use app\modules\adminCD\models\Product;
-use webvimark\modules\UserManagement\models\User;
+
 /* @var $this yii\web\View */
 /* @var $model app\modules\adminCD\models\Order */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,24 +12,7 @@ use webvimark\modules\UserManagement\models\User;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php
-    echo '<label class="control-label">Tên sản phẩm</label>';
-    echo Select2::widget([
-        'name' => 'select_product',
-        'data' => ArrayHelper::map(Product::findAll(['status'=>Product::STATUS_ACTIVE]), 'id', 'name'),
-        'language' => 'vi',
-        'options' => ['placeholder' => 'Chọn 1 sản phẩm ...'],
-        'pluginOptions' => [
-//            'templateResult' => new JsExpression('format'),
-//            'templateSelection' => new JsExpression('format'),
-//            'escapeMarkup' => $escape,
-            'allowClear' => true
-        ],
-    ]);
-    ?>
-
-
-    <?php echo $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->textInput() ?>
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
 
@@ -48,7 +28,11 @@ use webvimark\modules\UserManagement\models\User;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'amount')->textInput() ?>
+
     <?= $form->field($model, 'ship_cost')->textInput() ?>
+
+    <?= $form->field($model, 'total')->textInput() ?>
 
     <?= $form->field($model, 'pay_type')->textInput() ?>
 

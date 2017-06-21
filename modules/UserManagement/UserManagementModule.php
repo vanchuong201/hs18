@@ -206,7 +206,7 @@ class UserManagementModule extends \yii\base\Module
             ['label' => UserManagementModule::t('back', 'Users'), 'icon' => 'angle-double-right', 'url' => ['/user-management/user/index']],
             ['label' => UserManagementModule::t('back', 'Roles'), 'icon' => 'angle-double-right', 'url' => ['/user-management/role/index']],
             ['label' => UserManagementModule::t('back', 'Permissions'), 'icon' => 'angle-double-right', 'url' => ['/user-management/permission/index']],
-            ['label' => UserManagementModule::t('back', 'Permission groups'), 'icon' => 'angle-double-right', 'url' => ['/user-management/auth-item-grou/index']],
+            ['label' => UserManagementModule::t('back', 'Permission groups'), 'icon' => 'angle-double-right', 'url' => ['/user-management/auth-item-group/index']],
             ['label' => UserManagementModule::t('back', 'Visit log'), 'icon' => 'angle-double-right', 'url' => ['/user-management/user-visit-log/index']],
 
 //			['label' => '<i class="fa fa-angle-double-right"></i> ' . UserManagementModule::t('back', 'Users'), 'url' => ['/user-management/user/index']],
